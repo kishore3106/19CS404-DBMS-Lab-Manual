@@ -105,124 +105,216 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Insert a book with ISBN 978-1234567890, Title Data Science Essentials, Author Jane Doe, Publisher TechBooks, and Year 2024 into the Books table.
 
-```sql
--- Paste your SQL code below for Question 1
+```
+INSERT INTO Books(ISBN,Title,Author,Publisher,Year)
+VALUES("978-1234567890","Data Science Essentials","Jane Doe","TechBooks",2024);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1165" height="176" alt="Screenshot 2025-10-27 143306" src="https://github.com/user-attachments/assets/b063621f-a839-47d3-aa04-5b3f1262f6e1" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Insert all customers from Old_customers into Customers
 
-```sql
--- Paste your SQL code below for Question 2
+Table attributes are CustomerID, Name, Address, Email
+
+```
+INSERT INTO Customers
+VALUES('301',"Michael Johnson","123 Elm Street","michael.j@example.com");
+
+
+INSERT INTO Customers
+VALUES('302',"Sarah Lee","456 Oak Avenue","sarah.lee@example.com");
+
+
+INSERT INTO Customers
+VALUES('303',"David Wilson","789 Pine Road","david.w@example.com");
+
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1008" height="148" alt="Screenshot 2025-10-27 143423" src="https://github.com/user-attachments/assets/2a83edc2-3d7c-4782-a885-7059ec03101a" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named ProjectAssignments with the following constraints:
+AssignmentID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+ProjectID as INTEGER should be a foreign key referencing Projects(ProjectID).
+AssignmentDate as DATE should be NOT NULL.
 
-```sql
--- Paste your SQL code below for Question 3
+```
+CREATE TABLE ProjectAssignments
+(
+AssignmentID INTEGER primary key,
+EmployeeID INTEGER,
+ProjectID INTEGER,
+AssignmentDate DATE NOT NULL,
+foreign key (EmployeeID) references Employees(EmployeeID),
+foreign key (ProjectID) references Projects(ProjectID)
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="820" height="174" alt="Screenshot 2025-10-27 143646" src="https://github.com/user-attachments/assets/07210720-c33f-4173-bab2-0be9b02ff667" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
 
-```sql
--- Paste your SQL code below for Question 4
+```
+CREATE TABLE Products
+(
+ProductID INTEGER primary key,
+ProductName TEXT UNIQUE NOT NULL,
+Price REAL CHECK(Price>0),
+StockQuantity INTEGER CHECK(StockQuantity>0)
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="832" height="195" alt="Screenshot 2025-10-27 143717" src="https://github.com/user-attachments/assets/2b35aac2-dc3f-45f2-a468-b16daf7407bd" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to modify the Student_details table by adding a new column Email of type VARCHAR(50) and updating the column MARKS to have a default value of 0.
 
-```sql
--- Paste your SQL code below for Question 5
+```
+ALTER TABLE Student_details
+ADD COLUMN Email VARCHAR(50);
+
+ALTER TABLE Student_details
+ADD COLUMN MARKS INTEGER DEFAULT 0;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1213" height="144" alt="Screenshot 2025-10-27 143736" src="https://github.com/user-attachments/assets/665364e7-71d5-4132-a77a-6760e552a3d1" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL query to Rename the "city" column to "location" in the "customer" table.
 
-```sql
--- Paste your SQL code below for Question 6
+```
+ALTER TABLE customer
+RENAME COLUMN city to location;
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1192" height="203" alt="Screenshot 2025-10-27 143910" src="https://github.com/user-attachments/assets/ca19d3de-bbfd-476e-966e-a3888254292d" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert the following students into the Student_details table:
+RollNo      Name        Gender      Subject     MARKS
+----------  ----------  ----------  ----------  ----------
+202         Ella King        F       Chemistry     87
+203         James Bond       M       Literature    78
 
-```sql
--- Paste your SQL code below for Question 7
+```
+INSERT INTO Student_details
+VALUES(202,"Ella King","F","Chemistry",87);
+
+
+INSERT INTO Student_details
+VALUES(203,"James Bond","M","Literature",78);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="774" height="129" alt="Screenshot 2025-10-27 144125" src="https://github.com/user-attachments/assets/937653bc-dc99-429c-beed-a2206b4678bb" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
-```sql
--- Paste your SQL code below for Question 8
+```
+CREATE TABLE item
+(
+item_id TEXT primary key,
+item_desc TEXT NOT NULL,
+rate INTEGER NOT NULL,
+icom_id TEXT(4),
+foreign key (icom_id) references company(com_id) ON UPDATE CASCADE ON DELETE CASCADE
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="659" height="190" alt="Screenshot 2025-10-27 144135" src="https://github.com/user-attachments/assets/884d59c2-37db-47e7-8f33-58c72cbe57bf" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Orders with the following columns:
 
-```sql
--- Paste your SQL code below for Question 9
+OrderID as INTEGER
+OrderDate as TEXT
+CustomerID as INTEGER
+
+```
+CREATE TABLE Orders
+(
+OrderID INTEGER,
+OrderDate TEXT,
+CustomerID INTEGER
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="843" height="217" alt="Screenshot 2025-10-27 144212" src="https://github.com/user-attachments/assets/9c946732-ba3a-4571-9b0b-873275aff6a2" />
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Invoices with the following constraints:
 
-```sql
--- Paste your SQL code below for Question 10
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
+
+```
+CREATE TABLE Invoices
+(
+InvoiceID INTEGER primary key,
+InvoiceDate DATE,
+DueDate DATE CHECK(DueDate>InvoiceDate),
+Amount REAL CHECK(Amount>0)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="680" height="131" alt="Screenshot 2025-10-27 144229" src="https://github.com/user-attachments/assets/37f75738-de2e-4713-a226-1799a1c2445f" />
 
 
 ## RESULT
 Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
+
